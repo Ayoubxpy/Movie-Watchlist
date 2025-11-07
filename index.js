@@ -8,7 +8,7 @@ function handleFormSubmit() {
     form.addEventListener('submit', async(e)=>{
         const value = inputValue.value
         e.preventDefault()
-        const res = await fetch(`http://www.omdbapi.com/?apikey=a8db6146&s=${value}`)
+        const res = await fetch(`https://www.omdbapi.com/?apikey=a8db6146&s=${value}`)
         const data = await res.json()
         dataArry = data
         console.log(dataArry)
@@ -23,7 +23,7 @@ async function renderData(){
     const savedWatchlistIDs = JSON.parse(localStorage.getItem('movieId')) || []
     if(dataArry.Response === "True") {
         const promises = dataArry.Search.map(async (movie) => {
-            return  fetch(`http://www.omdbapi.com/?apikey=a8db6146&i=${movie.imdbID}`)
+            return  fetch(`https://www.omdbapi.com/?apikey=a8db6146&i=${movie.imdbID}`)
                     .then (res => res.json())
         })
         const moviesInfo = await Promise.all(promises)
@@ -86,6 +86,7 @@ async function renderData(){
          e.target.classList.add('add-to-watchlist-btn')
     }
 })
+
 
 
 
