@@ -8,7 +8,7 @@ if (movieIds.length > 0) {
 
 async function renderMovies(){
         const promises = movieIds.map( async movieId => {
-            return fetch(`http://www.omdbapi.com/?apikey=a8db6146&i=${movieId}`)
+            return fetch(`https://www.omdbapi.com/?apikey=a8db6146&i=${movieId}`)
             .then(res => res.json())
 })
         const moviesInfo = await Promise.all(promises)
@@ -30,3 +30,4 @@ async function renderMovies(){
         `
         }).join('')
     } 
+
